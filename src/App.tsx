@@ -177,7 +177,7 @@ export default function App() {
           {[
             { num: "500+", label: "Projects Completed" },
             { num: "200+", label: "Happy Clients" },
-            { num: "8+", label: "Years Experience" },
+            { num: "20+", label: "Years Experience" },
             { num: "50+", label: "Brands Available" },
           ].map((stat, i) => (
             <div key={i} className={`fade-up border-l border-neutral-200 pl-6`} style={{transitionDelay: `${i * 100}ms`}}>
