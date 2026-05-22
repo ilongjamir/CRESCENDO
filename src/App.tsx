@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { 
   Menu, X, ArrowRight, Speaker, Mic, Music, Settings, 
   Lightbulb, MonitorPlay, Check, Star, MapPin, Phone, 
@@ -13,6 +13,17 @@ import {
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const featuredScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollFeatured = (direction: 'left' | 'right') => {
+    if (featuredScrollRef.current) {
+      const scrollAmount = 350;
+      featuredScrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   // Scroll listener for Navbar
   useEffect(() => {
@@ -257,13 +268,12 @@ export default function App() {
           <div className="flex justify-between items-end mb-12 fade-up">
             <h2 className="text-3xl font-semibold tracking-tight">Featured Gear</h2>
             <div className="flex gap-2">
-              {/* Fake navigation buttons for aesthetics */}
-              <button className="w-10 h-10 border border-neutral-800 flex items-center justify-center hover:bg-white hover:text-black transition-colors"><ArrowRight className="rotate-180" size={16}/></button>
-              <button className="w-10 h-10 border border-neutral-800 flex items-center justify-center hover:bg-white hover:text-black transition-colors"><ArrowRight size={16}/></button>
+              <button onClick={() => scrollFeatured('left')} className="w-10 h-10 border border-neutral-800 flex items-center justify-center hover:bg-white hover:text-black transition-colors"><ArrowRight className="rotate-180" size={16}/></button>
+              <button onClick={() => scrollFeatured('right')} className="w-10 h-10 border border-neutral-800 flex items-center justify-center hover:bg-white hover:text-black transition-colors"><ArrowRight size={16}/></button>
             </div>
           </div>
 
-          <div className="flex overflow-x-auto hide-scroll gap-6 pb-8 snap-x">
+          <div ref={featuredScrollRef} className="flex overflow-x-auto hide-scroll gap-6 pb-8 snap-x">
             {[
               { name: "Yamaha MG Series", cat: "Mixers", spec: "Analog Mixing Console" },
               { name: "Shure SM58", cat: "Mic", spec: "Dynamic Vocal Microphone" },
