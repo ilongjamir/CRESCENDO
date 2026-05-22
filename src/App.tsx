@@ -528,9 +528,7 @@ export default function App() {
           <div>
             <h5 className="font-semibold mb-6 uppercase tracking-widest text-xs">Connect</h5>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 border border-neutral-200 flex items-center justify-center rounded-full hover:bg-black hover:text-white transition-colors"><Instagram size={16} /></a>
-              <a href="#" className="w-10 h-10 border border-neutral-200 flex items-center justify-center rounded-full hover:bg-black hover:text-white transition-colors"><Twitter size={16} /></a>
-              <a href="#" className="w-10 h-10 border border-neutral-200 flex items-center justify-center rounded-full hover:bg-black hover:text-white transition-colors"><Linkedin size={16} /></a>
+              <a href="https://www.instagram.com/crescendo_nagaland/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 border border-neutral-200 flex items-center justify-center rounded-full hover:bg-black hover:text-white transition-colors"><Instagram size={16} /></a>
             </div>
           </div>
         </div>
